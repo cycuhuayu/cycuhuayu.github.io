@@ -15,7 +15,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <style>
-
+.flex{
+    display: flex;
+  
+}
   
   .ccle {
   margin: 0px auto;/*div對齊效果*/
@@ -27,8 +30,7 @@
 .ccle div {
   display: inline-block;/*讓div並排*/ 
   vertical-align: top;/*就算個個div行數不同，也一律向上對齊*/ 
-  padding:5px 15px 5px 20px;
-  max-width: 570px;
+  padding:10px 25px 10px 25px;
 
 
 
@@ -93,15 +95,15 @@ function(json)
 
                 var Card = `
 
-                <div class="data" style="background-color:rgba(255,255,255,0.5) ; ">
+                <div class="data" style=" margin-left:50px; margin-right:50px; ">
                    <div class="flex">
-                    <div class="ccle" >
-                      <div>
+                    <div class="ccle" style="background-color:rgba(255,255,255,0.5) ;padding-left:50px;padding-right:50px;" >
+                      <div style:"style="text-align:center;">
                           <p style="text-align:center;"><b style="font-size:25px; color: #642100;">${group} － ${works}</b> <br><br>（&ensp; <b>作品類別：</b>${works_1} &ensp; <b>遊戲方式：</b>${works_2}&ensp;）</p>
                           <hr style=" dashed #FFF" size="1" width="100%">
                           <p class="dtag">${YT}</p>
                       </div>
-                      <div style="text-align: justify; text-justify:inter-ideograph;">
+                      <div style="text-align: justify; text-justify:inter-ideograph; max-width: 600px;">
                           <p style="font-size:18px;"><b>📜 桌遊介紹： </b></p>
                           <p style="font-size:15px;">${intro}</p>
 
