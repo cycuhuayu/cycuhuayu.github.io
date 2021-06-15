@@ -32,19 +32,48 @@
   vertical-align: top;/*就算個個div行數不同，也一律向上對齊*/ 
   padding:10px 25px 10px 25px;
 
-
-
-  
-
-
   }
+.button{
+    font-weight:bolder;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 100px 10px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    position: fixed; 
+ 
+    border-radius:30px;
+    left: : 0px;
+    background-color: white;
+    color: black;
+    border: 2px solid #842B00;
+    white-space:pre-wrap;
+}
+
+.button:hover {background-color: #e7e7e7;}
+
+
+
+
 </style>
-
-
 <html style="background-color: #f6f2ef">
+
+
+
+
   <head>
   </head>
   <body>
+<b><p style="color:red; text-align: center;">小提醒：找到喜歡的教材，下載前，將（1）學年度（2）組別（3）桌遊名稱　記起來，就不怕忘記是哪個作品唷！</p></b>
+
+<input class="button"  id="button"  name="button" type="button" value="下載教材" onclick="location.href='https://sites.google.com/view/cycuhuayu/%E6%95%99%E6%9D%90%E4%BD%9C%E5%93%81'" style="width:80px; height: 80px; white-space:pre-wrap;" />
+
 
 
 </div>
@@ -68,7 +97,7 @@ function(json)
 {
   var e = json.feed.entry,
    l = e.length;//預設爬出來的entry名稱是第一行的值
-  query = ["2021","句型"];//查找2020年 作品類別為句型的資料
+  query = ["2021"];// 作品年度為2020
   for (var j = 0; j < query.length; j++) 
   {
 
@@ -87,10 +116,8 @@ function(json)
     skill = entry.gsx$策略與技巧.$t;
     YT = entry.gsx$作品網址.$t;
 
-      if(year==query[j]) //判斷年度2021
-      {
         for ( a = 0; a < query.length; a++) {
-        if ( works_1==query[a] ) // 判斷遊戲方式"句型"
+        if ( year==query[a] ) 
         {
 
                 var Card = `
@@ -99,7 +126,7 @@ function(json)
                    <div class="flex">
                     <div class="ccle" style="background-color:rgba(255,255,255,0.5) ;padding-left:50px;padding-right:50px;" >
                       <div style:"style="text-align:center;">
-                          <p style="text-align:center;"><b style="font-size:25px; color: #642100;">${group} － ${works}</b> <br><br>（&ensp; <b>作品類別：</b>${works_1} &ensp; <b>遊戲方式：</b>${works_2}&ensp;）</p>
+                          <p style="text-align:center;"><b style="font-size:25px; color: #642100;">${group} － ${works}</b> <br><br>&ensp; <b>學年度：</b>${year} &ensp; <b>作品類別：</b>${works_1} &ensp; <b>遊戲方式：</b>${works_2}&ensp;</p>
                           <hr style=" dashed #FFF" size="1" width="100%">
                           <p class="dtag">${YT}</p>
                       </div>
@@ -137,6 +164,6 @@ function(json)
        };
    };
   }
-}
+
 );
 </script>
