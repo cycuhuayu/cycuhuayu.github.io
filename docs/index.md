@@ -1,4 +1,5 @@
 ## Welcome to GitHub Pages
+<meta http-equiv="refresh" content="0;url=https://sites.google.com/view/cycuhuayu/%E9%81%8A%E6%88%B2%E5%8C%96%E6%95%99%E6%9D%90%E4%BD%9C%E5%93%81/2020-%E6%A1%8C%E6%B8%B8%E8%A8%AD%E8%A8%88" />
 
 You can use the [editor on GitHub](https://github.com/cycuhuayu/cycuhuayu.github.io/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
