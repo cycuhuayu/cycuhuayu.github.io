@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<style>
+.flex{
+    display: flex;
+  
+}
+  
+  .ccle {
+  margin: 0px auto;/*div對齊效果*/
+/*text-align: center;/*display: inline對齊效果*/
+
+
+}
+
+.ccle div {
+  display: inline-block;/*讓div並排*/ 
+  vertical-align: top;/*就算個個div行數不同，也一律向上對齊*/ 
+  padding:10px 25px 10px 25px;
+
+  }
+.button{
+    font-weight:bolder;
+    border: none;
+    color: white;
+    padding: 1px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 100px 10px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    position: fixed; 
+ 
+    border-radius:30px;
+    left: : 0px;
+    background-color: white;
+    color: black;
+    border: 2px solid #842B00;
+    white-space:pre-wrap;
+}
+
+.button:hover {background-color: #e7e7e7;}
+
+
+
+
+</style>
+<html style="background-color: #f6f2ef">
+
+
+
+
+  <head>
+  </head>
+  <body>
+
+<input class="button"  id="button"  name="button" type="button"  value="🏠首頁" onclick="location.href='https://sites.google.com/view/cycuhuayu/page'" style="width:80px; height: 80px; white-space:pre-wrap;" />
+
+
+<div class="ccle" style="background-color:rgba(231,202,182,0.9) ;padding:10px;" >
+
+  
+  <b><p style="color:#58351D; text-align: center;font-size:25px;">作品類別&nbsp;：&nbsp;
+  <a href="https://cycuhuayu.github.io/chinesecharacter.html" style="color:#8A532E; font-size:22px;"><u>漢字</u></a>&emsp;
+  <a href="https://cycuhuayu.github.io/vocabulary.html" style="color:#8A532E;font-size:22px;"><u>詞彙</u></a>&emsp;
+  <a href="https://cycuhuayu.github.io/grammar.html" style="color:#8A532E;font-size:22px;"><u>語法</u></a>&emsp;
+  <a href="https://cycuhuayu.github.io/sentence.html" style="color:#8A532E;font-size:22px;"><u>句型</u></a>&emsp;
+  <a href="https://cycuhuayu.github.io/writings.html" style="color:#8A532E;font-size:22px;"><u>篇章</u></a>&emsp;
+  </p></b>
+
+
+</div>
+<br>
+</div>
+    <div class="results" style="">
+        <!-- data will be inserted here-->
+    </div>
+
+
+
+
+
+  </body>
+</html>
+
+
+
+<script>
+$.getJSON("https://spreadsheets.google.com/feeds/list/1PrDp_RoaolEYn-KcBvMOBG6c9Z4CHflyoWOVdnSu7bw/1/public/values?alt=json-in-script&callback=?",
+
+function(json)
+{
+  var e = json.feed.entry,
+   l = e.length;
+  query = ["漢字"]; //!!!!!!修改：作品類別!!!!!!
+  for (var j = 0; j < query.length; j++) 
+  {
+
+   for (i = 0; i < l; i++) 
+   {
+    entry = e[i];
+    time = entry.gsx$時間戳記.$t;
+    mail = entry.gsx$電子郵件地址.$t;
+    file = entry.gsx$雲端檔案下載連結.$t;
+    year = entry.gsx$學年度.$t;
+    group = entry.gsx$組別.$t;
+    works = entry.gsx$作品名稱.$t;
+    works_1 = entry.gsx$作品類別.$t;
+    works_2 = entry.gsx$遊戲技能.$t;
+    goal = entry.gsx$遊戲教學目標.$t;
+    coin = entry.gsx$獲勝條件.$t;
+    learn = entry.gsx$教材主要學習內容.$t;
+    yesorno = entry.gsx$是否搭配教材.$t;
+    answer = entry.gsx$若有搭配教材請於下方填寫.$t;
+    YT = entry.gsx$網址.$t;
+
+      if(works_1==query[j])
+      {
+        for ( a = 0; a < query.length; a++) {
+        if ( works_1==query[a] ) 
+        {
+
+                var Card = `
+
+                <div class="data" style=" margin-left:50px; margin-right:50px; ">
+                   <div class="flex">
+                    <div class="ccle" style="background-color:rgba(255,255,255,0.5) ;padding-left:50px;padding-right:50px; width:90%;text-align:center;" >
+                      <div style="text-align:center;">
+                          <p style="text-align:center;"><b style="font-size:25px; color: #642100;">${group} － ${works}</b> <br><br><b>學年度：</b>${year} &ensp; <b>作品類別：</b>${works_1} &ensp; <b>遊戲方式：</b>${works_2}&ensp;</p>
+                          <hr style=" dashed #FFF" size="1" width="100%">
+                          <p class="dtag">${YT}</p>
+                          <p style="font-size:18px;"><b><a href="${file}" target="_blank">📥點此下載教材</a></b></p>
+                      </div>
+                      <div style="text-align: justify; text-justify:inter-ideograph; max-width:560px;">
+
+
+                          <p style="font-size:18px;"><b>📜 遊戲教學目標：</b></p>                        
+                          <p style="font-size:15px;">${goal}</p>
+                          <p style="font-size:18px;"><b>📜 獲勝條件： </b></p>
+                          <p style="font-size:15px;">${coin}</p>
+                          <p style="font-size:18px;"><b>📜 教材主要學習內容： </b></p>
+                          <p style="font-size:15px;">${learn}</p>
+                          <p style="font-size:18px;"><b>📜 是否搭配教材： </b></p>
+                          <p style="font-size:15px;">${yesorno}。${answer}</p>
+
+
+
+
+                          
+                          
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                   
+                `;
+                    $('.results').append(Card);
+         };
+        };
+       };
+   };
+  }
+}
+);
+</script>
