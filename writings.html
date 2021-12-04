@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    <style>
+      .flex {
+        display: flex;
+
+      }
+
+      .ccle {
+        margin: 0px auto;
+        /*div對齊效果*/
+        /*text-align: center;/*display: inline對齊效果*/
+
+
+      }
+
+      .ccle div {
+        display: inline-block;
+        /*讓div並排*/
+        vertical-align: top;
+        /*就算個個div行數不同，也一律向上對齊*/
+        padding: 10px 25px 10px 25px;
+
+      }
+
+      .button {
+        font-weight: bolder;
+        border: none;
+        color: white;
+        padding: 1px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 100px 10px;
+        -webkit-transition-duration: 0.4s;
+        /* Safari */
+        transition-duration: 0.4s;
+        cursor: pointer;
+        position: fixed;
+
+        border-radius: 30px;
+        left: 0px;
+        background-color: white;
+        color: black;
+        border: 2px solid #842B00;
+        white-space: pre-wrap;
+      }
+
+      .button:hover {
+        background-color: #e7e7e7;
+      }
+    </style>
+    <html style="background-color: #f6f2ef">
+
+      <script>
+        const objectResult = object => {
+          object
+            // 確定 object 非 null 且有 values 屬性
+            ?.values
+            // values 裡面是 array
+            // forEach 可以迴圈元素，第二個是索引
+            ?.forEach((element, index) => {
+
+             // newElement = element.filter(el => !el.includes("組"));   // 篩選如果有"組"這個字就排除，最後形成新陣列
+
+              if (element[7] == "篇章") {
+                time = element[0];
+                mail = element[1];
+                file = element[3];
+                year = element[4];
+                group = element[5];
+                works = element[6];
+                works_1 = element[7];
+                works_2 = element[8];
+                goal = element[9];
+                coin = element[10];
+                learn = element[11];
+                yesorno = element[12];
+                answer = element[13];
+                YT = element[14];
+
+                var Card = `
+
+                <div class="data" style=" margin-left:50px; margin-right:50px; ">
+                   <div class="flex">
+                    <div class="ccle" style="background-color:rgba(255,255,255,0.5) ;padding-left:50px;padding-right:50px; width:90%;text-align:center;" >
+                      <div style="text-align:center;">
+                          <p style="text-align:center;"><b style="font-size:25px; color: #642100;">${group} － ${works}</b> <br><br><b>學年度：</b>${year} &ensp; <b>作品類別：</b>${works_1} &ensp; <b>遊戲方式：</b>${works_2}&ensp;</p>
+                          <hr style=" dashed #FFF" size="1" width="100%">
+                          <p class="dtag">${YT}</p>
+                          <p style="font-size:18px;"><b><a href="${file}" target="_blank">📥點此下載教材</a></b></p>
+                      </div>
+                      <div style="text-align: justify; text-justify:inter-ideograph; min-width:450px; max-width:450px">
+
+
+                          <p style="font-size:18px;"><b>📜 遊戲教學目標：</b></p>                        
+                          <p style="font-size:15px;">${goal}</p>
+                          <p style="font-size:18px;"><b>📜 獲勝條件： </b></p>
+                          <p style="font-size:15px;">${coin}</p>
+                          <p style="font-size:18px;"><b>📜 教材主要學習內容： </b></p>
+                          <p style="font-size:15px;">${learn}</p>
+                          <p style="font-size:18px;"><b>📜 是否搭配教材： </b></p>
+                          <p style="font-size:15px;">${yesorno}。${answer}</p>
+
+
+
+
+                          
+                          
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                   
+                `;
+                $('.results').append(Card);
+
+              }   // 如果陣列裡第一個是 "A" 或 "C" 則放進 HTML
+
+            });
+        };
+
+        fetch('https://sheets.googleapis.com/v4/spreadsheets/1PrDp_RoaolEYn-KcBvMOBG6c9Z4CHflyoWOVdnSu7bw/values/工作表1?alt=json&key=AIzaSyDgcwjrY1iZo-7jIdQeEQjXR6ghmC1SOS8')
+          .then(res => res.json())
+          .then(res => {
+            // 處理函式
+            objectResult(res);
+          })
+
+
+      </script>
+  </head>
+
+  <body>
+    <input class="button" id="button" name="button" type="button" value="🏠首頁"
+      onclick="location.href='https://sites.google.com/view/cycuhuayu/page'"
+      style="width:80px; height: 80px; white-space:pre-wrap;" />
+
+
+    <div class="ccle" style="background-color:rgba(231,202,182,0.9) ;padding:10px;">
+
+
+      <b>
+        <p style="color:#58351D; text-align: center;font-size:25px;">作品類別&nbsp;：&nbsp;
+          <a href="https://cycuhuayu.github.io/chinesecharacter.html"
+            style="color:#8A532E; font-size:22px;"><u>漢字</u></a>&emsp;
+          <a href="https://cycuhuayu.github.io/vocabulary.html"
+            style="color:#8A532E;font-size:22px;"><u>詞彙</u></a>&emsp;
+          <a href="https://cycuhuayu.github.io/grammar.html" style="color:#8A532E;font-size:22px;"><u>語法</u></a>&emsp;
+          <a href="https://cycuhuayu.github.io/sentence.html" style="color:#8A532E;font-size:22px;"><u>句型</u></a>&emsp;
+          <a href="https://cycuhuayu.github.io/writings.html" style="color:#8A532E;font-size:22px;"><u>篇章</u></a>&emsp;
+        </p>
+      </b>
+
+
+    </div>
+    <br>
+    </div>
+    <div class="results" style="">
+      <!-- data will be inserted here-->
+    </div>
+  </body>
+
+
+
+</html>
